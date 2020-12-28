@@ -1,12 +1,14 @@
-import React from 'react'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="container">
-      <h1>
-        Hello, React!
-      </h1>
-    </div>
+    <BrowserRouter>
+      <div className="container pt-4">
+        <h1>
+          Hello, React!
+        </h1>
+      </div>
+    </BrowserRouter>
   );
 }
 
