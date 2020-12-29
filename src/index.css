@@ -21,3 +21,41 @@ code {
 .note span {
   margin-left: 1rem;
 }
+
+.alert-enter {
+  opacity: 0;
+}
+
+.alert-enter-active {
+  opacity: 1;
+  transition: .5s ease;
+}
+
+.alert-exit-active {
+  opacity: 0;
+  transition: .35s ease;
+}
+
+.note-exit-active {
+  animation: note .8s ease forwards;
+}
+
+.note-enter-active {
+  animation: note .8s ease alternate-reverse;
+}
+
+@keyframes note {
+  0%{
+    transform: translateX(0);
+  }
+
+  30%{
+    opacity: .7;
+    transform: translateX(30px);
+  }
+
+  100%{
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
