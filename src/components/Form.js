@@ -14,13 +14,13 @@ const Form = () => {
         e.preventDefault();
 
         if (value.trim()) {
-            
+
             setValue('');
 
             fireBase.addNote(value.trim())
                 .then(() => {
                     alert.show('New note was created', 'success');
-                    
+
                 })
                 .catch(() => {
                     alert.show('Something went wrong', 'danger');
@@ -29,12 +29,12 @@ const Form = () => {
         } else {
             alert.show('Enter note title');
         }
-        
+
     }
 
     return (
         <form onSubmit={submitHandler}>
-            <div className="form-group">
+            <div className="input-group">
                 <input
                     type="text"
                     className="form-control"
@@ -42,6 +42,9 @@ const Form = () => {
                     value={value}
                     onChange={e => setValue(e.target.value)}
                 />
+                <div className="input-group-append">
+                    <button className="btn btn-outline-dark" type="submit">Add</button>
+                </div>
             </div>
         </form>
     );

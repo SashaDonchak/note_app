@@ -1,5 +1,6 @@
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Note from './Note';
 
 const Notes = ({ notes, onRemove }) => {
     if (notes.length === 0) return <small>There are no notes yet</small>;
@@ -12,19 +13,7 @@ const Notes = ({ notes, onRemove }) => {
                     classNames="note"
                     timeout={800}
                 >
-                    <li className="list-group-item note">
-                        <div>
-                            <strong>
-                                {note.title}
-                            </strong>
-                            <span>
-                                {note.date}
-                            </span>
-                        </div>
-                        <button onClick={() => onRemove(note.id)} className="btn btn-outline-danger btn-sm">
-                            &times;
-                        </button>
-                    </li>
+                    <Note note={note} onRemove={onRemove} />
                 </CSSTransition>
             ))}
         </TransitionGroup>
