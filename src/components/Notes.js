@@ -2,8 +2,8 @@ import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const Notes = ({ notes, onRemove }) => {
-    if (notes === null) return;
-    
+    if (notes.length === 0) return <small>There are no notes yet</small>;
+
     return(
         <TransitionGroup component="ul" className="list-group">
             {notes.map(note => (
