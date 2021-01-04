@@ -68,3 +68,7 @@ code {
 .list-group-item-primary *:not(button) {
   text-decoration: line-through;
 }
+
+.btn-login {
+  margin-left:  auto;
+}
