@@ -1,4 +1,4 @@
-import { ADD_NOTE, SHOW_LOADER, FETCH_NOTES, REMOVE_NOTE } from '../types'
+import { ADD_NOTE, SHOW_LOADER, FETCH_NOTES, REMOVE_NOTE, UPDATE_NOTE } from '../types'
 
 const handlers = {
     [SHOW_LOADER]: state => ({ ...state, loading: true }),
@@ -14,6 +14,13 @@ const handlers = {
     [REMOVE_NOTE]: (state, { payload }) => ({
         ...state,
         notes: state.notes.filter(note => note.id !== payload)
+    }),
+    [UPDATE_NOTE]: (state, { payload }) => ({
+        ...state,
+        notes: state.notes.map(note => {
+            if (note.id !== payload.id) return note;
+            return payload
+        })
     }),
     DEFAULT: state => state,
 }

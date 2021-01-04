@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { FirebaseContext } from '../context/firebase/firebaseContext';
 
 const Note = ({ note, onRemove }) => {
-    const [checked, setChecked] = useState(false);
+    const { updateNote } = useContext(FirebaseContext);
 
     return (
-        <li className={`list-group-item note ${checked ? 'list-group-item-primary' : ''}`} >
+        <li className={`list-group-item note ${note.checked ? 'list-group-item-primary' : ''}`} >
             <div>
-                <input type="checkbox" className="mr-3" value="1" checked={checked} onChange={() => {setChecked(!checked)}} />
+                <input type="checkbox" className="mr-3" value="1" checked={note.checked} onChange={() => { updateNote({
+                    ...note, checked: !note.checked
+                }) }} />
                 <strong>
                     {note.title}
                 </strong>
