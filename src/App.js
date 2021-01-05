@@ -31,9 +31,7 @@ function App() {
                 <Route path="/signup">
                   <Signup />
                 </Route>
-                <Route path="/account">
-                  account
-                </Route>
+                <Route path="/account">account</Route>
               </Switch>
             </div>
           </BrowserRouter>
