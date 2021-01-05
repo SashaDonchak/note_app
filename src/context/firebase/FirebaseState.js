@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import { FirebaseContext } from './firebaseContext';
 import { firebaseReducer } from './firebaseReducer';
-import { ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER, UPDATE_NOTE } from '../types';
+import { ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER, START, SUCCESS, UPDATE_NOTE } from '../types';
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -21,9 +21,9 @@ const FirebaseState = ({ children }) => {
         const res = await axios.get(`${url}/notes.json`);
 
         if (res.data === null) {
-            dispatch({type: FETCH_NOTES, payload: []}); 
+            dispatch({ type: FETCH_NOTES, payload: [] });
             return;
-        } 
+        }
 
         const payload = Object.keys(res.data).map(key => {
             return {
@@ -76,15 +76,16 @@ const FirebaseState = ({ children }) => {
         const updatedNote = {
             title: note.title,
             date: note.date,
-            checked: note.checked    
+            checked: note.checked
         }
 
+        dispatch({ type: UPDATE_NOTE + START, payload: note });
+
         try {
-            const res = await axios.put(`${url}/notes/${note.id}.json`, updatedNote);
-            console.log(res);
+            await axios.put(`${url}/notes/${note.id}.json`, updatedNote);
 
             dispatch({
-                type: UPDATE_NOTE,
+                type: UPDATE_NOTE + SUCCESS,
                 payload: note
             })
 
