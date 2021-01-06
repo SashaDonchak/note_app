@@ -4,7 +4,7 @@ import Notes from '../components/Notes';
 import Loader from '../components/Loader';
 import { FirebaseContext } from '../context/firebase/firebaseContext';
 
-export const Home = () => {
+const Home = () => {
   const { loading, notes, fetchNotes, removeNote } = useContext(
     FirebaseContext
   );
@@ -23,3 +23,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

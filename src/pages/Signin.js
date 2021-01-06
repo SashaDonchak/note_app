@@ -2,7 +2,7 @@ import React from 'react';
 
 const Signin = () => (
   <form>
-    <div className="form-group">
+    {/*     <div className="form-group">
       <label htmlFor="user_email">Email address</label>
       <input
         type="email"
@@ -17,7 +17,7 @@ const Signin = () => (
     </div>
     <button type="submit" className="btn btn-outline-primary">
       Submit
-    </button>
+    </button> */}
   </form>
 );
 

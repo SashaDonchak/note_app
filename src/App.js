@@ -1,11 +1,12 @@
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Alert from './components/Alert';
-import { Navbar } from './components/Navbar';
+import Navbar from './components/Navbar';
 import AlertState from './context/alert/AlertState';
 import AuthState from './context/auth/AuthState';
 import FirebaseState from './context/firebase/FirebaseState';
-import { About } from './pages/About';
-import { Home } from './pages/Home';
+import About from './pages/About';
+import Home from './pages/Home';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 

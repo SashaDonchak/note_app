@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { FirebaseContext } from './firebaseContext';
 import { firebaseReducer } from './firebaseReducer';
@@ -49,6 +50,7 @@ const FirebaseState = ({ children }) => {
       title,
       date: new Date().toJSON(),
       checked: false,
+      loading: false,
     };
 
     try {
@@ -113,6 +115,10 @@ const FirebaseState = ({ children }) => {
       {children}
     </FirebaseContext.Provider>
   );
+};
+
+FirebaseState.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default FirebaseState;

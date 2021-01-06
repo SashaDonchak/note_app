@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const About = () => (
+const About = () => (
   <div className="jumbotron">
     <div className="container">
       <h1 className="display-4">The best react app</h1>
@@ -10,3 +10,5 @@ export const About = () => (
     </div>
   </div>
 );
+
+export default About;
