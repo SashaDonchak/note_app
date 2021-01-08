@@ -1,9 +1,12 @@
-import { LOGOUT, SIGNIN, SIGNUP } from '../types';
+import { SET_CURRENT_USER, SHOW_LOADER } from '../types';
 
 const handlers = {
-  [SIGNUP]: (state) => state,
-  [SIGNIN]: (state) => state,
-  [LOGOUT]: (state) => state,
+  [SHOW_LOADER]: (state) => ({ ...state, loading: true }),
+  [SET_CURRENT_USER]: (state, { payload }) => ({
+    ...state,
+    user: payload,
+    loading: false,
+  }),
   DEFAULT: (state) => state,
 };
 

@@ -12,10 +12,10 @@ import Signup from './pages/Signup';
 
 function App() {
   return (
-    <AuthState>
-      <FirebaseState>
-        <AlertState>
-          <BrowserRouter>
+    <BrowserRouter>
+      <AlertState>
+        <AuthState>
+          <FirebaseState>
             <Navbar />
             <div className="container pt-4">
               <Alert />
@@ -35,10 +35,10 @@ function App() {
                 <Route path="/account">account</Route>
               </Switch>
             </div>
-          </BrowserRouter>
-        </AlertState>
-      </FirebaseState>
-    </AuthState>
+          </FirebaseState>
+        </AuthState>
+      </AlertState>
+    </BrowserRouter>
   );
 }
 

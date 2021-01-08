@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { FirebaseContext } from './firebaseContext';
@@ -12,6 +12,7 @@ import {
   SUCCESS,
   UPDATE_NOTE,
 } from '../types';
+import { AuthContext } from '../auth/authContext';
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -23,11 +24,17 @@ const FirebaseState = ({ children }) => {
 
   const [state, dispatch] = useReducer(firebaseReducer, initialState);
 
+  const { user } = useContext(AuthContext);
+
   const showLoader = () => dispatch({ type: SHOW_LOADER });
 
   const fetchNotes = async () => {
     showLoader();
-    const res = await axios.get(`${url}/notes.json`);
+    const res = await axios.get(
+      `${url}/notes.json${
+        user !== null ? `?orderBy="user"&equalTo="${user.uid}"` : ''
+      }`
+    );
 
     if (res.data === null) {
       dispatch({ type: FETCH_NOTES, payload: [] });
@@ -51,6 +58,7 @@ const FirebaseState = ({ children }) => {
       date: new Date().toJSON(),
       checked: false,
       loading: false,
+      user: user.uid,
     };
 
     try {
@@ -118,7 +126,7 @@ const FirebaseState = ({ children }) => {
 };
 
 FirebaseState.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default FirebaseState;
