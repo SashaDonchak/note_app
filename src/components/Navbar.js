@@ -40,10 +40,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className="navbar navbar-light navbar-expand-lg"
+      className="navbar navbar-light navbar-expand"
       style={{ backgroundColor: '#e3f2fd' }}
     >
-      <div className="navbar-brand">Note App</div>
+      <div className="navbar-brand d-none d-lg-block">Note App</div>
       <ul className="navbar-nav">
         <li className="nav-item">
           <NavLink exact className="nav-link" to="/">
