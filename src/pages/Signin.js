@@ -1,11 +1,19 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/auth/authContext';
 
 const Signin = () => {
-  const { signin } = useContext(AuthContext);
+  const { signin, user } = useContext(AuthContext);
+
+  const getRedirect = () => {
+    if (user === null) return false;
+    // alert.show('Sign in to use this app.', 'warning');
+    return <Redirect to="/" />;
+  };
+
   return (
     <>
+      {getRedirect()}
       <h1>Sign In</h1>
       <form onSubmit={signin} className="mt-3">
         <div className="form-group">
