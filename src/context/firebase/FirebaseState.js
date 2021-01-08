@@ -92,6 +92,8 @@ const FirebaseState = ({ children }) => {
       title: note.title,
       date: note.date,
       checked: note.checked,
+      loading: false,
+      user: user.uid,
     };
 
     dispatch({ type: UPDATE_NOTE + START, payload: note });
