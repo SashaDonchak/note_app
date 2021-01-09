@@ -17,6 +17,7 @@ const Home = () => {
   // const alert = useContext(AlertContext);
 
   useEffect(() => {
+    if (user === null) return;
     fetchNotes();
 
     // eslint-disable-next-line
